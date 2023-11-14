@@ -1,16 +1,14 @@
 [gd_scene load_steps=4 format=3 uid="uid://c0568nyr02eu0"]
 
-[ext_resource type="Texture2D" uid="uid://bvbpeuxk1prnm" path="res://Graphics/Fire/Fire Wizard0.png" id="1_ogmoo"]
-[ext_resource type="Script" path="res://Scripts/player_movement.gd" id="2_dl3ne"]
+[ext_resource type="PackedScene" uid="uid://ccos6b67hpvga" path="res://floor.tscn" id="1_chu3p"]
+[ext_resource type="PackedScene" uid="uid://bb0wxkjct7qbb" path="res://player_1.tscn" id="2_vg8ex"]
 [ext_resource type="PackedScene" uid="uid://qvbdt7hbb1co" path="res://fireball.tscn" id="6_qbljj"]
 
 [node name="Level" type="Node2D"]
 
-[node name="Player" type="Sprite2D" parent="."]
-position = Vector2(6, 47)
-scale = Vector2(0.873, 3)
-texture = ExtResource("1_ogmoo")
-script = ExtResource("2_dl3ne")
+[node name="Floor" parent="." instance=ExtResource("1_chu3p")]
 
 [node name="Fireball" parent="." instance=ExtResource("6_qbljj")]
 position = Vector2(449, 195)
+
+[node name="Player1" parent="." instance=ExtResource("2_vg8ex")]
