@@ -13,6 +13,7 @@ script = ExtResource("1_4c6x7")
 position = Vector2(0, 4)
 
 [node name="Fireball" parent="." instance=ExtResource("6_qbljj")]
+visible = false
 position = Vector2(449, 195)
 
 [node name="Player1" parent="." instance=ExtResource("2_vg8ex")]

@@ -8,17 +8,7 @@ var fireballs = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	
-	print(get_children())
-	
-	
-	for i in range(2):
-		var instance = fireball.instantiate()
-		instance.position = Vector2(rng.randf_range(0.0, 1000.0),rng.randf_range(0.0, 500.0))
-		fireballs.append(instance)
-	
-	for fireball in fireballs:
-		$"../Floor".add_child(fireball)
+	print()
 	
 
 
@@ -35,11 +25,6 @@ func _process(delta):
 	if Input.is_action_pressed("fireball"):
 		var instance = fireball.instantiate()
 		instance.position = position
+		$"../Floor".add_child(instance)
 		fireballs.append(instance)
-	for fireball in fireballs:
-		$"../Floor".add_child(fireball)
-		
-	
-#func _input(event):
-#	if event.is_action_pressed("move_up_1"):
-#		print("my_action occurred!")
+
