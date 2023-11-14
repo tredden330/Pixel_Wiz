@@ -14,6 +14,9 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	var idleAnimation = $Fire_Idle
+	var castingAnimation = $Fire_Casting
+	
 	if Input.is_action_pressed("up"):
 		position.y -= speed
 	if Input.is_action_pressed("down"):
@@ -27,4 +30,9 @@ func _process(delta):
 		instance.position = position
 		$"../Floor".add_child(instance)
 		fireballs.append(instance)
+		
+		idleAnimation.hide()
+		castingAnimation.show()
+		
+		
 
