@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dnnm0j6n0uqh5"
-path="res://.godot/imported/Ice Wizard0.png-4e06e594daa882d98cf73736bd7c2c72.ctex"
+uid="uid://brfm3ioomdo71"
+path="res://.godot/imported/Ice Wizard0.png-c9939ce3ee2ab08df795089b4ee3f4eb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Ice Wizard0.png"
-dest_files=["res://.godot/imported/Ice Wizard0.png-4e06e594daa882d98cf73736bd7c2c72.ctex"]
+source_file="res://Graphics/Ice/Ice Wizard0.png"
+dest_files=["res://.godot/imported/Ice Wizard0.png-c9939ce3ee2ab08df795089b4ee3f4eb.ctex"]
 
 [params]
 

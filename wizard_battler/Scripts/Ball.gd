@@ -1,4 +1,4 @@
-extends Sprite2D
+extends AnimatedSprite2D
 
 var speed = 5
 var rng = RandomNumberGenerator.new()

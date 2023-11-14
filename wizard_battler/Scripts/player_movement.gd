@@ -1,4 +1,4 @@
-extends Sprite2D
+extends Node2D
 
 var speed = 3
 var sprite2d

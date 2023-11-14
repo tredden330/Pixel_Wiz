@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bb0wxkjct7qbb"]
+
+[ext_resource type="Script" path="res://Scripts/player_movement.gd" id="1_e0jcg"]
+[ext_resource type="Texture2D" uid="uid://bvbpeuxk1prnm" path="res://Graphics/Fire/Fire Wizard0.png" id="1_jn58r"]
+
+[node name="Player1" type="Node2D"]
+script = ExtResource("1_e0jcg")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_jn58r")

@@ -1,8 +1,32 @@
-[gd_scene load_steps=2 format=3 uid="uid://qvbdt7hbb1co"]
+[gd_scene load_steps=6 format=3 uid="uid://qvbdt7hbb1co"]
 
-[ext_resource type="Texture2D" uid="uid://bwadro4gi516r" path="res://icon.svg" id="1_vudjy"]
+[ext_resource type="Texture2D" uid="uid://gnrx1slbbf7n" path="res://Graphics/Fire/FireAttackBasic1.png" id="1_x41dh"]
+[ext_resource type="Texture2D" uid="uid://btl18lxtbj046" path="res://Graphics/Fire/FireAttackBasic2.png" id="2_lvw7e"]
+[ext_resource type="Texture2D" uid="uid://cdm7rq1aqy6pu" path="res://Graphics/Fire/FireAttackBasic3.png" id="3_mwj7x"]
+[ext_resource type="Texture2D" uid="uid://c8jbhw4vaqlve" path="res://Graphics/Fire/FireAttackBasic4.png" id="4_iof5h"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xfkkv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_x41dh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_lvw7e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_mwj7x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_iof5h")
+}],
+"loop": true,
+"name": &"default",
+"speed": 9.0
+}]
 
 [node name="Fireball" type="Node2D"]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_vudjy")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_xfkkv")
+frame_progress = 0.489003

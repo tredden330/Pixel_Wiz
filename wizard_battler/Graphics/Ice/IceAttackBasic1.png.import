@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://qhv57b0xc4k8"
-path="res://.godot/imported/IceAttackBasic1.png-b2f10f1e48c6e37e8b9895339c7d9455.ctex"
+uid="uid://dmhmtgwstv4jg"
+path="res://.godot/imported/IceAttackBasic1.png-56f931f8cb19ec8f9d3f06d82b6a0d5c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://IceAttackBasic1.png"
-dest_files=["res://.godot/imported/IceAttackBasic1.png-b2f10f1e48c6e37e8b9895339c7d9455.ctex"]
+source_file="res://Graphics/Ice/IceAttackBasic1.png"
+dest_files=["res://.godot/imported/IceAttackBasic1.png-56f931f8cb19ec8f9d3f06d82b6a0d5c.ctex"]
 
 [params]
 
