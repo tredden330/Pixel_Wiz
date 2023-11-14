@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://c0568nyr02eu0"]
+[gd_scene load_steps=6 format=3 uid="uid://c0568nyr02eu0"]
 
 [ext_resource type="Texture2D" uid="uid://dnnm0j6n0uqh5" path="res://Ice Wizard0.png" id="1_ogmoo"]
 [ext_resource type="Script" path="res://player_movement.gd" id="2_dl3ne"]
-[ext_resource type="Script" path="res://right_movement.gd" id="3_8ecvc"]
 [ext_resource type="Texture2D" uid="uid://qhv57b0xc4k8" path="res://IceAttackBasic1.png" id="4_5alrh"]
 [ext_resource type="Script" path="res://Ball.gd" id="4_iuq8k"]
 [ext_resource type="PackedScene" uid="uid://qvbdt7hbb1co" path="res://fireball.tscn" id="6_qbljj"]
@@ -14,12 +13,6 @@ position = Vector2(6, 47)
 scale = Vector2(0.873, 3)
 texture = ExtResource("1_ogmoo")
 script = ExtResource("2_dl3ne")
-
-[node name="Right Bar" type="Sprite2D" parent="."]
-position = Vector2(1158, 42)
-scale = Vector2(1, 2.91)
-texture = ExtResource("1_ogmoo")
-script = ExtResource("3_8ecvc")
 
 [node name="Ball" type="Sprite2D" parent="."]
 position = Vector2(562, 186)
