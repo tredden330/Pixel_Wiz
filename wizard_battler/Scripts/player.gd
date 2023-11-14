@@ -54,5 +54,18 @@ func _process(delta):
 		idleAnimation.show()
 		castingAnimation.hide()	
 		
-	print(timer)
+	#update directional arrow
+	var player_location_minus_mouse = get_viewport().get_mouse_position() - position
+	if abs(player_location_minus_mouse.x) > abs(player_location_minus_mouse.y):
+		if (player_location_minus_mouse.x > 0):
+			$Arrow_parent.rotation_degrees = 0
+		else:
+			$Arrow_parent.rotation_degrees = 180
+	else:
+		if (player_location_minus_mouse.y > 0):
+			$Arrow_parent.rotation_degrees = 90
+		else:
+			$Arrow_parent.rotation_degrees = 270
+		
+	print($Arrow_parent.rotation)
 

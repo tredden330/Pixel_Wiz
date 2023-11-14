@@ -1,13 +1,13 @@
 [gd_scene load_steps=5 format=3 uid="uid://bb0wxkjct7qbb"]
 
-[ext_resource type="Script" path="res://Scripts/player_movement.gd" id="1_e0jcg"]
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_5msb1"]
 [ext_resource type="Texture2D" uid="uid://bvbpeuxk1prnm" path="res://Graphics/Fire/Fire Wizard0.png" id="1_jn58r"]
 [ext_resource type="Texture2D" uid="uid://dyb7t5xnaiuen" path="res://Graphics/Fire/Fire Wizard1.png" id="3_jefqg"]
 [ext_resource type="Texture2D" uid="uid://d3yu6s088we2n" path="res://Graphics/UI/Arrow.png" id="4_1ewdj"]
 
 [node name="Player1" type="Node2D"]
 scale = Vector2(2.5, 2.5)
-script = ExtResource("1_e0jcg")
+script = ExtResource("1_5msb1")
 
 [node name="Fire_Casting" type="Sprite2D" parent="."]
 texture = ExtResource("3_jefqg")
@@ -16,8 +16,8 @@ texture = ExtResource("3_jefqg")
 visible = false
 texture = ExtResource("1_jn58r")
 
-[node name="Node2D" type="Node2D" parent="."]
+[node name="Arrow_parent" type="Node2D" parent="."]
 
-[node name="Arrow" type="Sprite2D" parent="Node2D"]
+[node name="Arrow" type="Sprite2D" parent="Arrow_parent"]
 position = Vector2(26, -1)
 texture = ExtResource("4_1ewdj")
