@@ -10,6 +10,8 @@ var didCast = false
 var cooldown = 1.0
 var timer =  cooldown
 
+var facing = Vector2(1, 0)
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	print()
@@ -44,6 +46,8 @@ func _process(delta):
 		print("casting")
 		var instance = fireball.instantiate()
 		instance.position = position
+		instance.set_direction(facing)
+		instance.rotation_degrees = $Arrow_parent.rotation_degrees
 		$"..".add_child(instance)
 		fireballs.append(instance)
 		
@@ -59,13 +63,17 @@ func _process(delta):
 	if abs(player_location_minus_mouse.x) > abs(player_location_minus_mouse.y):
 		if (player_location_minus_mouse.x > 0):
 			$Arrow_parent.rotation_degrees = 0
+			facing = Vector2(1, 0)
 		else:
 			$Arrow_parent.rotation_degrees = 180
+			facing = Vector2(-1, 0)
 	else:
 		if (player_location_minus_mouse.y > 0):
 			$Arrow_parent.rotation_degrees = 90
+			facing = Vector2(0, 1)
 		else:
 			$Arrow_parent.rotation_degrees = 270
+			facing = Vector2(0, -1)
 		
 	print($Arrow_parent.rotation)
 
