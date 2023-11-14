@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://borx6ycps6fvi"]
+
+[ext_resource type="Texture2D" uid="uid://taag2vpkg18c" path="res://Graphics/Clock/Clock.png" id="1_wgike"]
+[ext_resource type="Texture2D" uid="uid://duvknhnkydpb2" path="res://Graphics/Clock/ClockHand.png" id="2_ydbi8"]
+
+[node name="Clock" type="Node2D"]
+
+[node name="Base_visual" type="Sprite2D" parent="."]
+texture = ExtResource("1_wgike")
+
+[node name="Hand_parent" type="Node2D" parent="."]
+rotation = -1.97222
+
+[node name="Hand" type="Sprite2D" parent="Hand_parent"]
+position = Vector2(1, -10)
+texture = ExtResource("2_ydbi8")
