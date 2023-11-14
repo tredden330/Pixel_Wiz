@@ -10,7 +10,6 @@ scale = Vector2(2.5, 2.5)
 script = ExtResource("1_e0jcg")
 
 [node name="Fire_Casting" type="Sprite2D" parent="."]
-visible = false
 texture = ExtResource("3_jefqg")
 
 [node name="Fire_Idle" type="Sprite2D" parent="."]

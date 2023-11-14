@@ -41,6 +41,7 @@ func _process(delta):
 	if Input.is_action_pressed("right"):
 		position.x += speed
 	if Input.is_action_pressed("fireball") and didCast == false:
+		print("casting")
 		var instance = fireball.instantiate()
 		instance.position = position
 		$"..".add_child(instance)
@@ -48,8 +49,10 @@ func _process(delta):
 		
 		idleAnimation.hide()
 		castingAnimation.show()
-		
 		didCast = true
+	else:
+		idleAnimation.show()
+		castingAnimation.hide()	
 		
-		
+	print(timer)
 

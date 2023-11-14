@@ -10,5 +10,4 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-
 	$Clock.get_child(1).rotation += delta*up
