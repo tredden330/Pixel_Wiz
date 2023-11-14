@@ -5,10 +5,10 @@
 [ext_resource type="Texture2D" uid="uid://dyb7t5xnaiuen" path="res://Graphics/Fire/Fire Wizard1.png" id="3_jefqg"]
 
 [node name="Player1" type="Node2D"]
+scale = Vector2(3, 3)
 script = ExtResource("1_e0jcg")
 
 [node name="Fire_Casting" type="Sprite2D" parent="."]
-visible = false
 texture = ExtResource("3_jefqg")
 
 [node name="Fire_Idle" type="Sprite2D" parent="."]

@@ -33,6 +33,10 @@ func _process(delta):
 		
 		idleAnimation.hide()
 		castingAnimation.show()
+	else:
+		idleAnimation.show()
+		castingAnimation.hide()	
+	
 		
 		
 
