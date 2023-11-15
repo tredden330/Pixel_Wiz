@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://c0568nyr02eu0"]
+[gd_scene load_steps=7 format=3 uid="uid://c0568nyr02eu0"]
 
 [ext_resource type="Script" path="res://level.gd" id="1_4c6x7"]
 [ext_resource type="PackedScene" uid="uid://ccos6b67hpvga" path="res://floor.tscn" id="1_chu3p"]
 [ext_resource type="PackedScene" uid="uid://bb0wxkjct7qbb" path="res://player_1.tscn" id="2_vg8ex"]
 [ext_resource type="PackedScene" uid="uid://borx6ycps6fvi" path="res://clock.tscn" id="4_uvoia"]
+[ext_resource type="Script" path="res://Scripts/Network Manager.gd" id="6_2vom2"]
 [ext_resource type="PackedScene" uid="uid://qvbdt7hbb1co" path="res://fireball.tscn" id="6_qbljj"]
 
 [node name="Level" type="Node2D"]
@@ -23,3 +24,6 @@ position = Vector2(72, 322)
 [node name="Clock" parent="." instance=ExtResource("4_uvoia")]
 position = Vector2(575, 64)
 scale = Vector2(1.97, 1.97)
+
+[node name="Network Manager" type="Node" parent="."]
+script = ExtResource("6_2vom2")

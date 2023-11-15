@@ -16,6 +16,7 @@ var facing = Vector2(1, 0)
 func _ready():
 	print()
 	
+	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -75,5 +76,6 @@ func _process(delta):
 			$Arrow_parent.rotation_degrees = 270
 			facing = Vector2(0, -1)
 		
-	print($Arrow_parent.rotation)
+	#print(DisplayServer.get_name())
+	#print(get_tree().get_multiplayer())
 
