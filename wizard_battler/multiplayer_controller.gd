@@ -1,6 +1,9 @@
 extends Control
 
-@export var Address = "127.0.0.1"
+#possible addresses: 192.168.0.255, 192.168.0.199
+
+@export var Address = "vm.thomasredden.com"
+var port = 2049
 
 var peer = ENetMultiplayerPeer.new()
 
@@ -13,14 +16,11 @@ func _ready():
 	
 	if DisplayServer.get_name() == 'headless':
 		print('i am server!!')
-		var server = peer.create_server(2010, 3)
+		var server = peer.create_server(port)
 		if server != OK:
-			print("hosting error: " + server)
+			print("hosting error: ", server)
 		multiplayer.set_multiplayer_peer(peer)
-		print("Waiting for players...")
-		
-		
-		
+		print("server made on port: ", port ," Waiting for players...")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -28,10 +28,10 @@ func _process(delta):
 	pass
 
 func peer_connected(id):
-	print("Player Connected: " + str(id))
+	print("Player Connected: ", id)
 	
 func peer_disconnected(id):
-	print("Player Disconnected: " + id)
+	print("Player Disconnected: ", id)
 
 func connected_to_server():
 	print("connected to server!")
@@ -42,5 +42,17 @@ func connection_failed():
 func _on_join_button_down():
 	print("join button down")
 	peer = ENetMultiplayerPeer.new()
-	peer.create_client("192.168.0.255", 2010)
+	print(Address)
+	peer.create_client(Address, port)
 	multiplayer.set_multiplayer_peer(peer)
+
+
+
+func _on_host_button_down():
+	print('i am server!!')
+	var server = peer.create_server(port)
+	if server != OK:
+		print("hosting error: ", server)
+	multiplayer.set_multiplayer_peer(peer)
+	print("server made on port: ", port ," Waiting for players...")
+		
