@@ -4,10 +4,6 @@ var peer = ENetMultiplayerPeer.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	if DisplayServer.get_name() == 'headless':
-		print('i am server!!')
-		peer.create_server(2010, 3)
-		multiplayer.multiplayer_peer = peer
 	else:
 		print('I am client!!')
 		peer.create_client('vm.thomasredden.com', 2010)

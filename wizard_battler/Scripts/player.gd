@@ -21,7 +21,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	#fetch sprite2d 
+	#fetch sprite2d, set animation
 	var idleAnimation = $Fire_Idle
 	var castingAnimation = $Fire_Casting
 	idleAnimation.visible = true

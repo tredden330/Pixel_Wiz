@@ -19,6 +19,5 @@ texture = ExtResource("1_jn58r")
 [node name="Arrow_parent" type="Node2D" parent="."]
 
 [node name="Arrow" type="Sprite2D" parent="Arrow_parent"]
-visible = false
 position = Vector2(26, -1)
 texture = ExtResource("4_1ewdj")
