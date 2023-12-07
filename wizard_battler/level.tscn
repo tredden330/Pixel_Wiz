@@ -10,10 +10,9 @@
 script = ExtResource("1_4c6x7")
 
 [node name="Floor" parent="." instance=ExtResource("1_chu3p")]
-position = Vector2(0, 4)
 
 [node name="Player1" parent="." instance=ExtResource("2_vg8ex")]
-position = Vector2(72, 322)
+position = Vector2(64, 64)
 
 [node name="Clock" parent="." instance=ExtResource("4_uvoia")]
 position = Vector2(575, 64)

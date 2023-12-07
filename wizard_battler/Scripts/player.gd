@@ -1,63 +1,74 @@
 extends Node2D
 
-var speed = 3
-var sprite2d
-var fireball = load("res://fireball.tscn")
-var rng = RandomNumberGenerator.new()
-var fireballs = []
 
-var didCast = false
-var cooldown = 1.0
-var timer =  cooldown
+
+var action = null
+var xlim = 9
+var ylim = 5
+var xpos = 0
+var ypos = 0
 
 var facing = Vector2(1, 0)
+
+var idleAnimation
+var castingAnimation
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	print()
-	
-	
+	idleAnimation = $Fire_Idle
+	castingAnimation = $Fire_Casting
+	idleAnimation.show()
+	castingAnimation.hide()
 
+#executes actions and movements
+func _doAction():
+	if (action == null):
+		idleAnimation.show()
+		castingAnimation.hide()
+	elif (action == "up"):
+		ypos -= 1
+		position.y = (ypos * 128) + 64
+		idleAnimation.show()
+		castingAnimation.hide()
+	elif (action == "down"):
+		ypos += 1
+		position.y = (ypos * 128) + 64
+		idleAnimation.show()
+		castingAnimation.hide()
+	elif (action == "left"):
+		xpos -= 1
+		position.x = (xpos * 128) + 64
+		idleAnimation.show()
+		castingAnimation.hide()
+	elif (action == "right"):
+		xpos += 1
+		position.x = (xpos * 128) + 64
+		idleAnimation.show()
+		castingAnimation.hide()
+	elif (action == "fireball"):
+		$".."._makeFireball(xpos, ypos, facing)
+		idleAnimation.hide()
+		castingAnimation.show()
+	action = null
+	
+		
+		
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	#fetch sprite2d, set animation
-	var idleAnimation = $Fire_Idle
-	var castingAnimation = $Fire_Casting
-	idleAnimation.visible = true
-	castingAnimation.visible = false
 	
-	#monitor spell cooldown
-	if didCast == true:
-		timer -= delta
-		if timer <= 0.0:
-			didCast = false
-			timer = cooldown
-	
-	#resolve inputs
+	#set inputs
 	if Input.is_action_pressed("up"):
-		position.y -= speed
+		action = "up"
 	if Input.is_action_pressed("down"):
-		position.y += speed
+		action = "down"
 	if Input.is_action_pressed("left"):
-		position.x -= speed
+		action = "left"
 	if Input.is_action_pressed("right"):
-		position.x += speed
-	if Input.is_action_pressed("fireball") and didCast == false:
-		print("casting")
-		var instance = fireball.instantiate()
-		instance.position = position
-		instance.set_direction(facing)
-		instance.rotation_degrees = $Arrow_parent.rotation_degrees
-		$"..".add_child(instance)
-		fireballs.append(instance)
-		
-		idleAnimation.hide()
-		castingAnimation.show()
-		didCast = true
-	else:
-		idleAnimation.show()
-		castingAnimation.hide()	
+		action = "right"
+	if Input.is_action_pressed("fireball"):
+		action = "fireball"
 		
 	#update directional arrow
 	var player_location_minus_mouse = get_viewport().get_mouse_position() - position
@@ -76,6 +87,4 @@ func _process(delta):
 			$Arrow_parent.rotation_degrees = 270
 			facing = Vector2(0, -1)
 		
-	#print(DisplayServer.get_name())
-	#print(get_tree().get_multiplayer())
 

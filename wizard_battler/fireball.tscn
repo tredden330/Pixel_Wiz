@@ -30,7 +30,7 @@ animations = [{
 script = ExtResource("1_jkspi")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(1.5, 1.5)
+scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_xfkkv")
 autoplay = "default"
 frame_progress = 0.696094

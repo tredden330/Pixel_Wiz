@@ -9,8 +9,7 @@
 texture = ExtResource("1_wgike")
 
 [node name="Hand_parent" type="Node2D" parent="."]
-rotation = -1.97222
 
 [node name="Hand" type="Sprite2D" parent="Hand_parent"]
-position = Vector2(1, -10)
+position = Vector2(0, -9)
 texture = ExtResource("2_ydbi8")
