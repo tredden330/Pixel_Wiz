@@ -89,6 +89,7 @@ func setupPlayers(players, locations):
 		print(index)
 		var instance = player_char.instantiate()
 		$"..".add_child(instance)
+		instance.name = str(players[index])
 		instance.position.x = locations[index]
 		instance.position.y = locations[index]
 		player_models.append(instance)
