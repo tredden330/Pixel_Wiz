@@ -91,7 +91,7 @@ func startGame():
 		print("sending player messages: ", players)
 		var randoms = []
 		for player in players:
-			randoms.append(rng.randf_range(0,600))
+			randoms.append(rng.randi_range(0,9))
 		setupPlayers.rpc(players, randoms)
 		
 @rpc("any_peer", "call_local", "reliable", 0)
@@ -102,8 +102,8 @@ func setupPlayers(players, locations):
 		var instance = player_char.instantiate()
 		$"..".add_child(instance)
 		instance.name = str(players[index])
-		instance.position.x = locations[index]
-		instance.position.y = locations[index]
+		instance.xpos = locations[index]
+		instance.ypos = locations[index]
 		player_models.append(instance)
 		
 
