@@ -1,0 +1,60 @@
+[gd_scene load_steps=11 format=3 uid="uid://bb0wxkjct7qbb"]
+
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_mn4sf"]
+[ext_resource type="Texture2D" uid="uid://bvbpeuxk1prnm" path="res://Graphics/Fire/Fire Wizard0.png" id="2_urjhg"]
+[ext_resource type="Texture2D" uid="uid://d3yu6s088we2n" path="res://Graphics/UI/Arrow.png" id="3_341hn"]
+[ext_resource type="Texture2D" uid="uid://dyb7t5xnaiuen" path="res://Graphics/Fire/Fire Wizard1.png" id="4_b7y8b"]
+[ext_resource type="Texture2D" uid="uid://d2b1j3dgn5ni4" path="res://Graphics/Fire/Fire Wizard2.png" id="5_ueawn"]
+[ext_resource type="Texture2D" uid="uid://cschg3s488uw0" path="res://Graphics/Fire/Fire Wizard3.png" id="6_4vx4s"]
+[ext_resource type="Texture2D" uid="uid://t16duq6j5q4y" path="res://Graphics/Fire/Fire Wizard4.png" id="7_qkdkg"]
+[ext_resource type="Texture2D" uid="uid://re47lmlxxfap" path="res://Graphics/Fire/Fire Wizard5.png" id="8_4mml1"]
+[ext_resource type="Texture2D" uid="uid://cm1f0d2qhiphh" path="res://Graphics/Fire/Fire Wizard6.png" id="9_6vkuo"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ycsj2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_urjhg")
+}, {
+"duration": 0.6,
+"texture": ExtResource("4_b7y8b")
+}, {
+"duration": 0.5,
+"texture": ExtResource("5_ueawn")
+}, {
+"duration": 0.5,
+"texture": ExtResource("6_4vx4s")
+}, {
+"duration": 1.5,
+"texture": ExtResource("7_qkdkg")
+}, {
+"duration": 0.5,
+"texture": ExtResource("8_4mml1")
+}, {
+"duration": 2.0,
+"texture": ExtResource("9_6vkuo")
+}],
+"loop": false,
+"name": &"default",
+"speed": 9.0
+}]
+
+[node name="Player1" type="Node2D"]
+scale = Vector2(2.5, 2.5)
+script = ExtResource("1_mn4sf")
+
+[node name="Fire_Idle" type="Sprite2D" parent="."]
+position = Vector2(6, 0)
+texture = ExtResource("2_urjhg")
+
+[node name="Arrow_parent" type="Node2D" parent="."]
+
+[node name="Arrow" type="Sprite2D" parent="Arrow_parent"]
+position = Vector2(26, -1)
+texture = ExtResource("3_341hn")
+
+[node name="Casting_Animation" type="AnimatedSprite2D" parent="."]
+position = Vector2(6, 0)
+sprite_frames = SubResource("SpriteFrames_ycsj2")
+frame = 6
+frame_progress = 1.0

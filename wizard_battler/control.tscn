@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://vkmsrx3kqbfe"]
 
-[ext_resource type="Script" path="res://multiplayer_controller.gd" id="1_ob4f5"]
+[ext_resource type="Script" path="res://UI.gd" id="1_kr37m"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -9,9 +9,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_ob4f5")
+script = ExtResource("1_kr37m")
 
 [node name="Start" type="Button" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 146.0
 offset_top = 11.0
@@ -27,4 +28,5 @@ offset_right = 130.0
 offset_bottom = 42.0
 text = "JOIN"
 
+[connection signal="button_down" from="Start" to="." method="_on_start_button_down"]
 [connection signal="button_down" from="Join" to="." method="_on_join_button_down"]

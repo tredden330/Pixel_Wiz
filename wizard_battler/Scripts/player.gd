@@ -7,7 +7,6 @@ var xlim = 9
 var ylim = 5
 var xpos = 0
 var ypos = 0
-
 var facing = Vector2(1, 0)
 
 var idleAnimation
