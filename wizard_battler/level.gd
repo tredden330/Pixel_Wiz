@@ -28,7 +28,6 @@ func _makeFireball(x, y, facing):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	#game starts when server says so
-	print_tree()
 	if gameStarted == true:
 		time += delta
 		$Clock.get_child(1).rotation = time

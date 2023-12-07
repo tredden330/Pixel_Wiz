@@ -14,6 +14,9 @@ var up = 4
 var players = []
 var player_models = []
 
+var action_ids = []
+var actions = []
+
 var rng = RandomNumberGenerator.new()
 
 # Called when the node enters the scene tree for the first time.
@@ -41,8 +44,17 @@ func _process(delta):
 		time += delta*up
 		if time >= 6.283185:
 			time = 0
+			requestActions.rpc()
 		declareTime.rpc(time)
-		#print_once_per_client.rpc()
+		
+		#resolve actions
+		if len(action_ids) == len(players):
+			print("act!!", action_ids, actions)
+			resolveActions.rpc(action_ids, actions)
+			action_ids = []
+			actions = []
+			
+			
 
 func peer_connected(id):
 	print("Player Connected: ", id)
@@ -79,10 +91,10 @@ func startGame():
 		print("sending player messages: ", players)
 		var randoms = []
 		for player in players:
-			randoms.append(rng.randf_range(0,900))
+			randoms.append(rng.randf_range(0,600))
 		setupPlayers.rpc(players, randoms)
 		
-@rpc
+@rpc("any_peer", "call_local", "reliable", 0)
 func setupPlayers(players, locations):
 	print(players)
 	for index in len(players):
@@ -95,6 +107,18 @@ func setupPlayers(players, locations):
 		player_models.append(instance)
 		
 
-@rpc
+@rpc("any_peer", "call_local", "reliable", 0)
 func declareTime(time):
 	$"..".time = time
+
+@rpc("any_peer", "call_local", "reliable", 0)
+func requestActions():
+#	print("action requested")
+	for player in player_models:
+#		print(player.name)
+		player.setActionRequest()
+		
+@rpc("any_peer", "call_local", "reliable", 0)
+func resolveActions(action_ids, actions):
+	for index in len(action_ids):
+		get_node(str("../" + str(action_ids[index])))._doAction(actions[index])

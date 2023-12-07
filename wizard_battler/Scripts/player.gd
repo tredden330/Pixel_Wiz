@@ -12,6 +12,8 @@ var facing = Vector2(1, 0)
 var idleAnimation
 var castingAnimation
 
+var actionRequested = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	idleAnimation = $Fire_Idle
@@ -20,7 +22,7 @@ func _ready():
 	castingAnimation.hide()
 
 #executes actions and movements
-func _doAction():
+func _doAction(action):
 	if (action == null):
 		idleAnimation.show()
 		castingAnimation.hide()
@@ -59,7 +61,8 @@ func _process(delta):
 	
 	#if this player is the one that controls this unit
 	if name == str(multiplayer.get_unique_id()):
-		#set inputs
+		
+		#set action
 		if Input.is_action_pressed("up"):
 			action = "up"
 		if Input.is_action_pressed("down"):
@@ -70,7 +73,13 @@ func _process(delta):
 			action = "right"
 		if Input.is_action_pressed("fireball"):
 			action = "fireball"
-			
+		
+		#if the server requested an action, give it
+		if actionRequested == true:
+			sendAction.rpc(multiplayer.get_unique_id(), action)
+			action = null
+			actionRequested = false
+		
 		#update directional arrow
 		var player_location_minus_mouse = get_viewport().get_mouse_position() - position
 		if abs(player_location_minus_mouse.x) > abs(player_location_minus_mouse.y):
@@ -87,5 +96,13 @@ func _process(delta):
 			else:
 				$Arrow_parent.rotation_degrees = 270
 				facing = Vector2(0, -1)
-			
-
+		
+@rpc("any_peer", "call_local", "reliable", 0)
+func sendAction(id, action):
+#	print(id, " : ", action)
+	$"../Network Manager".action_ids.append(id)
+	$"../Network Manager".actions.append(action)
+	
+	
+func setActionRequest():
+	actionRequested = true
