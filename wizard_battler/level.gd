@@ -1,7 +1,7 @@
 extends Node2D
 
 var time = 0.0
-var up = 7.5
+var up = 4
 
 #vars for fireballs
 var fireball = load("res://fireball.tscn")
@@ -29,7 +29,6 @@ func _process(delta):
 		$Clock.get_child(1).rotation = 0
 		$Player1._doAction()
 		for Fireball in fireballs:
-			print(Fireball.xpos)
 			Fireball._moveProjectile()
 
 

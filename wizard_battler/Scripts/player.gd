@@ -17,7 +17,7 @@ var castingAnimation
 func _ready():
 	print()
 	idleAnimation = $Fire_Idle
-	castingAnimation = $Fire_Casting
+	castingAnimation = $Casting_Animation
 	idleAnimation.show()
 	castingAnimation.hide()
 
@@ -50,6 +50,7 @@ func _doAction():
 		$".."._makeFireball(xpos, ypos, facing)
 		idleAnimation.hide()
 		castingAnimation.show()
+		castingAnimation.play()
 	action = null
 	
 		

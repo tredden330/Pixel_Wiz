@@ -1,25 +1,61 @@
-[gd_scene load_steps=5 format=3 uid="uid://bb0wxkjct7qbb"]
+[gd_scene load_steps=11 format=3 uid="uid://bb0wxkjct7qbb"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_5msb1"]
 [ext_resource type="Texture2D" uid="uid://bvbpeuxk1prnm" path="res://Graphics/Fire/Fire Wizard0.png" id="1_jn58r"]
 [ext_resource type="Texture2D" uid="uid://dyb7t5xnaiuen" path="res://Graphics/Fire/Fire Wizard1.png" id="3_jefqg"]
 [ext_resource type="Texture2D" uid="uid://d3yu6s088we2n" path="res://Graphics/UI/Arrow.png" id="4_1ewdj"]
+[ext_resource type="Texture2D" uid="uid://d2b1j3dgn5ni4" path="res://Graphics/Fire/Fire Wizard2.png" id="5_pri4i"]
+[ext_resource type="Texture2D" uid="uid://cschg3s488uw0" path="res://Graphics/Fire/Fire Wizard3.png" id="6_iuegh"]
+[ext_resource type="Texture2D" uid="uid://t16duq6j5q4y" path="res://Graphics/Fire/Fire Wizard4.png" id="7_qqvxp"]
+[ext_resource type="Texture2D" uid="uid://re47lmlxxfap" path="res://Graphics/Fire/Fire Wizard5.png" id="8_5p7t2"]
+[ext_resource type="Texture2D" uid="uid://cm1f0d2qhiphh" path="res://Graphics/Fire/Fire Wizard6.png" id="9_v0aye"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ycsj2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_jn58r")
+}, {
+"duration": 0.6,
+"texture": ExtResource("3_jefqg")
+}, {
+"duration": 0.5,
+"texture": ExtResource("5_pri4i")
+}, {
+"duration": 0.5,
+"texture": ExtResource("6_iuegh")
+}, {
+"duration": 1.5,
+"texture": ExtResource("7_qqvxp")
+}, {
+"duration": 0.5,
+"texture": ExtResource("8_5p7t2")
+}, {
+"duration": 2.0,
+"texture": ExtResource("9_v0aye")
+}],
+"loop": false,
+"name": &"default",
+"speed": 9.0
+}]
 
 [node name="Player1" type="Node2D"]
 scale = Vector2(2.5, 2.5)
 script = ExtResource("1_5msb1")
 
-[node name="Fire_Casting" type="Sprite2D" parent="."]
-position = Vector2(6, 0)
-texture = ExtResource("3_jefqg")
-
 [node name="Fire_Idle" type="Sprite2D" parent="."]
-visible = false
 position = Vector2(6, 0)
 texture = ExtResource("1_jn58r")
 
 [node name="Arrow_parent" type="Node2D" parent="."]
 
 [node name="Arrow" type="Sprite2D" parent="Arrow_parent"]
+visible = false
 position = Vector2(26, -1)
 texture = ExtResource("4_1ewdj")
+
+[node name="Casting_Animation" type="AnimatedSprite2D" parent="."]
+position = Vector2(6, 0)
+sprite_frames = SubResource("SpriteFrames_ycsj2")
+frame = 6
+frame_progress = 1.0
