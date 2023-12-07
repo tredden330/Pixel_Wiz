@@ -21,4 +21,4 @@ scale = Vector2(1.97, 1.97)
 
 [node name="Network Manager" type="Node" parent="."]
 
-[node name="Control" parent="." instance=ExtResource("5_ynvhy")]
+[node name="UI" parent="." instance=ExtResource("5_ynvhy")]

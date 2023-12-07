@@ -14,7 +14,7 @@ func _ready():
 	multiplayer.connected_to_server.connect(connected_to_server)
 	multiplayer.connection_failed.connect(connection_failed)
 	
-	if DisplayServer.get_name() == 'headless':
+	if DisplayServer.get_name() == 'headless':          #this should only be true for the server
 		print('i am server!!')
 		var server = peer.create_server(port)
 		if server != OK:
@@ -45,14 +45,3 @@ func _on_join_button_down():
 	print(Address)
 	peer.create_client(Address, port)
 	multiplayer.set_multiplayer_peer(peer)
-
-
-
-func _on_host_button_down():
-	print('i am server!!')
-	var server = peer.create_server(port)
-	if server != OK:
-		print("hosting error: ", server)
-	multiplayer.set_multiplayer_peer(peer)
-	print("server made on port: ", port ," Waiting for players...")
-		
