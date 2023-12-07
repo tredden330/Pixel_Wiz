@@ -12,6 +12,9 @@ var up = 4
 @export var player_char: PackedScene
 
 var players = []
+var player_models = []
+
+var rng = RandomNumberGenerator.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -27,6 +30,8 @@ func _ready():
 			print("hosting error: ", server)
 		multiplayer.set_multiplayer_peer(peer)
 		print("server made on port: ", port ," Waiting for players...")
+		
+	rng.seed = hash("Godot")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -69,14 +74,26 @@ func serverMessage(action):
 @rpc("any_peer", "call_local", "reliable", 0)
 func startGame():
 	$"..".gameStarted = true
+	$"../UI/Start".visible = false
 	if multiplayer.is_server():
-		print("sending player messages")
-		declarePlayers.rpc(20)
+		print("sending player messages: ", players)
+		var randoms = []
+		for player in players:
+			randoms.append(rng.randf_range(0,900))
+		setupPlayers.rpc(players, randoms)
 		
 @rpc
-func declarePlayers(message):
-	print(message)
-	
+func setupPlayers(players, locations):
+	print(players)
+	for index in len(players):
+		print(index)
+		var instance = player_char.instantiate()
+		$"..".add_child(instance)
+		instance.position.x = locations[index]
+		instance.position.y = locations[index]
+		player_models.append(instance)
+		
+
 @rpc
 func declareTime(time):
 	$"..".time = time

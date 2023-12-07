@@ -13,7 +13,7 @@ var gameStarted = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	pass
 	
 func _makeFireball(x, y, facing):
 	var instance = fireball.instantiate()
@@ -27,7 +27,6 @@ func _makeFireball(x, y, facing):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-
 	#game starts when server says so
 	if gameStarted == true:
 		time += delta

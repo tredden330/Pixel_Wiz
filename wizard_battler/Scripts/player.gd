@@ -14,7 +14,6 @@ var castingAnimation
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	print()
 	idleAnimation = $Fire_Idle
 	castingAnimation = $Casting_Animation
 	idleAnimation.show()
