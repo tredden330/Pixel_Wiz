@@ -25,4 +25,5 @@ func _process(delta):
 			
 			$"Projectile Manager".resolveProjectileMoves()
 
-
+func stopGame():
+	gameStarted = false

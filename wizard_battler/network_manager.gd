@@ -6,7 +6,7 @@ var port = 2049
 var peer = ENetMultiplayerPeer.new()
 
 var time = 0.0
-var up = 4
+var up = 8
 
 #grab player scene
 @export var player_char: PackedScene
@@ -50,8 +50,8 @@ func _process(delta):
 		
 		#resolve actions
 		if len(action_ids) == len(players):
-			print("actions:: ids:", action_ids, " actions: ",actions, " mouses: ",mouses)
-			resolveActions.rpc(action_ids, actions)
+			#print("actions:: ids:", action_ids, " actions: ",actions, " mouses: ",mouses)
+			resolveActions.rpc(action_ids, actions, mouses)
 			action_ids = []
 			actions = []
 			mouses = []
@@ -64,6 +64,12 @@ func peer_connected(id):
 	
 func peer_disconnected(id):
 	print("Player Disconnected: ", id)
+	players.erase(id)
+	print(players)
+	if len(players) == 0:
+		$"..".quitGame()
+		time = 0.0
+	
 
 func connected_to_server():
 	print("connected to server!")
@@ -116,7 +122,7 @@ func requestActions():
 		player.setActionRequest()
 		
 @rpc("any_peer", "call_local", "reliable", 0)
-func resolveActions(action_ids, actions):
+func resolveActions(action_ids, actions, mouses):
 	for index in len(action_ids):
 		get_node(str("../" + str(action_ids[index])))._doAction(actions[index], mouses[index])
 	$"../Projectile Manager".resolveProjectileMoves()
