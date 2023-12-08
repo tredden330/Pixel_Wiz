@@ -47,7 +47,7 @@ func _doAction(action):
 		idleAnimation.show()
 		castingAnimation.hide()
 	elif (action == "fireball"):
-		$".."._makeFireball(xpos, ypos, facing)
+		$"../Projectile Manager".addFireball(xpos, ypos, facing)
 		idleAnimation.hide()
 		castingAnimation.show()
 		castingAnimation.play()
@@ -58,7 +58,8 @@ func _doAction(action):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	
+	position.x = (xpos * 128) + 64
+	position.y = (ypos * 128) + 64
 	#if this player is the one that controls this unit
 	if name == str(multiplayer.get_unique_id()):
 		
@@ -96,6 +97,8 @@ func _process(delta):
 			else:
 				$Arrow_parent.rotation_degrees = 270
 				facing = Vector2(0, -1)
+	else:
+		$Arrow_parent.visible = false
 		
 @rpc("any_peer", "call_local", "reliable", 0)
 func sendAction(id, action):

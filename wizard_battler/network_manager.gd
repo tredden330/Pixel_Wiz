@@ -122,3 +122,4 @@ func requestActions():
 func resolveActions(action_ids, actions):
 	for index in len(action_ids):
 		get_node(str("../" + str(action_ids[index])))._doAction(actions[index])
+	$"../Projectile Manager".resolveProjectileMoves()

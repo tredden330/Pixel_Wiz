@@ -33,6 +33,5 @@ func _moveProjectile():
 		position.x = (xpos * 128) + 64
 		
 	#despawn at max range
-
 	if xpos > xlim or xpos < 0:
 		queue_free()

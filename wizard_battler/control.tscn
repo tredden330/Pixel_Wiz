@@ -14,10 +14,10 @@ script = ExtResource("1_kr37m")
 [node name="Start" type="Button" parent="."]
 visible = false
 layout_mode = 0
-offset_left = 146.0
-offset_top = 11.0
-offset_right = 263.0
-offset_bottom = 42.0
+offset_left = 16.0
+offset_top = 10.0
+offset_right = 133.0
+offset_bottom = 41.0
 text = "Start"
 
 [node name="Join" type="Button" parent="."]
