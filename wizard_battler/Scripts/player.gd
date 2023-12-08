@@ -22,35 +22,35 @@ func _ready():
 	castingAnimation.hide()
 
 #executes actions and movements
-func _doAction(action):
+func _doAction(action, mouse):
+	print(action, mouse)
 	if (action == null):
 		idleAnimation.show()
 		castingAnimation.hide()
 	elif (action == "up"):
 		ypos -= 1
-		position.y = (ypos * 128) + 64
 		idleAnimation.show()
 		castingAnimation.hide()
 	elif (action == "down"):
 		ypos += 1
-		position.y = (ypos * 128) + 64
 		idleAnimation.show()
 		castingAnimation.hide()
 	elif (action == "left"):
 		xpos -= 1
-		position.x = (xpos * 128) + 64
 		idleAnimation.show()
 		castingAnimation.hide()
 	elif (action == "right"):
 		xpos += 1
-		position.x = (xpos * 128) + 64
 		idleAnimation.show()
 		castingAnimation.hide()
 	elif (action == "fireball"):
+		facing = calculateFacing(mouse)
 		$"../Projectile Manager".addFireball(xpos, ypos, facing)
 		idleAnimation.hide()
 		castingAnimation.show()
 		castingAnimation.play()
+	position.x = (xpos * 128) + 64
+	position.y = (ypos * 128) + 64
 	action = null
 	
 		
@@ -77,7 +77,7 @@ func _process(delta):
 		
 		#if the server requested an action, give it
 		if actionRequested == true:
-			sendAction.rpc(multiplayer.get_unique_id(), action)
+			sendAction.rpc(multiplayer.get_unique_id(), action, get_viewport().get_mouse_position())
 			action = null
 			actionRequested = false
 		
@@ -101,11 +101,26 @@ func _process(delta):
 		$Arrow_parent.visible = false
 		
 @rpc("any_peer", "call_local", "reliable", 0)
-func sendAction(id, action):
-#	print(id, " : ", action)
+func sendAction(id, action, mouse):
 	$"../Network Manager".action_ids.append(id)
 	$"../Network Manager".actions.append(action)
-	
+	$"../Network Manager".mouses.append(mouse)
 	
 func setActionRequest():
 	actionRequested = true
+	
+func calculateFacing(mouse):
+	var player_location_minus_mouse = mouse - position
+	var face
+	if abs(player_location_minus_mouse.x) > abs(player_location_minus_mouse.y):
+		if (player_location_minus_mouse.x > 0):
+			face = Vector2(1, 0)
+		else:
+			face = Vector2(-1, 0)
+	else:
+		if (player_location_minus_mouse.y > 0):
+			face = Vector2(0, 1)
+		else:
+			face = Vector2(0, -1)
+	return face
+	

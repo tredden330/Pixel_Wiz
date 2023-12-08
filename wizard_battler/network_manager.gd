@@ -16,6 +16,7 @@ var player_models = []
 
 var action_ids = []
 var actions = []
+var mouses = []
 
 var rng = RandomNumberGenerator.new()
 
@@ -49,10 +50,11 @@ func _process(delta):
 		
 		#resolve actions
 		if len(action_ids) == len(players):
-			print("act!!", action_ids, actions)
+			print("actions:: ids:", action_ids, " actions: ",actions, " mouses: ",mouses)
 			resolveActions.rpc(action_ids, actions)
 			action_ids = []
 			actions = []
+			mouses = []
 			
 			
 
@@ -75,13 +77,8 @@ func join_button_pressed():
 	peer.create_client(Address, port)
 	multiplayer.set_multiplayer_peer(peer)
 	
-	
 func start_button_pressed():
 	startGame.rpc()
-	
-@rpc("any_peer", "call_remote", "reliable", 0)
-func serverMessage(action):
-	print("Client Action: ", action)
 	
 @rpc("any_peer", "call_local", "reliable", 0)
 func startGame():
@@ -121,5 +118,5 @@ func requestActions():
 @rpc("any_peer", "call_local", "reliable", 0)
 func resolveActions(action_ids, actions):
 	for index in len(action_ids):
-		get_node(str("../" + str(action_ids[index])))._doAction(actions[index])
+		get_node(str("../" + str(action_ids[index])))._doAction(actions[index], mouses[index])
 	$"../Projectile Manager".resolveProjectileMoves()

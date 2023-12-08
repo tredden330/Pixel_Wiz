@@ -21,7 +21,6 @@ func addFireball(x, y, facing):
 	fireballs.append(instance)
 
 func resolveProjectileMoves():
-	print("resolving projectile moves")
 	for Fireball in fireballs:
 		if Fireball != null:
 				Fireball._moveProjectile()

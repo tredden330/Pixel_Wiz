@@ -20,12 +20,9 @@ func _process(delta):
 		$Clock.get_child(1).rotation = time
 		#print($Clock.get_child(1).rotation)
 		if ($Clock.get_child(1).rotation >= 6.283185):
-			print("tick")
+			#print("tick")
 			$Clock.get_child(1).rotation = 0
 			
 			$"Projectile Manager".resolveProjectileMoves()
-			#send input to server
-#			if !multiplayer.is_server():
-#				$"Network Manager".serverMessage.rpc_id(1, "hi")
 
 
