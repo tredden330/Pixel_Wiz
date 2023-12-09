@@ -1,11 +1,11 @@
 [gd_scene load_steps=8 format=3 uid="uid://c0568nyr02eu0"]
 
 [ext_resource type="Script" path="res://level.gd" id="1_4c6x7"]
-[ext_resource type="PackedScene" uid="uid://ccos6b67hpvga" path="res://floor.tscn" id="1_chu3p"]
-[ext_resource type="PackedScene" uid="uid://bb0wxkjct7qbb" path="res://player.tscn" id="2_vg8ex"]
-[ext_resource type="PackedScene" uid="uid://borx6ycps6fvi" path="res://clock.tscn" id="4_uvoia"]
+[ext_resource type="PackedScene" uid="uid://ccos6b67hpvga" path="res://Scenes/floor.tscn" id="1_chu3p"]
+[ext_resource type="PackedScene" uid="uid://bb0wxkjct7qbb" path="res://Scenes/player.tscn" id="2_vg8ex"]
+[ext_resource type="PackedScene" uid="uid://borx6ycps6fvi" path="res://Scenes/clock.tscn" id="4_uvoia"]
 [ext_resource type="Script" path="res://network_manager.gd" id="5_dc4xo"]
-[ext_resource type="PackedScene" uid="uid://vkmsrx3kqbfe" path="res://control.tscn" id="5_ynvhy"]
+[ext_resource type="PackedScene" uid="uid://vkmsrx3kqbfe" path="res://Scenes/control.tscn" id="5_ynvhy"]
 [ext_resource type="Script" path="res://Projectile Manager.gd" id="7_pyxv7"]
 
 [node name="Level" type="Node2D"]
@@ -15,7 +15,6 @@ script = ExtResource("1_4c6x7")
 
 [node name="Clock" parent="." instance=ExtResource("4_uvoia")]
 position = Vector2(575, 64)
-scale = Vector2(1.97, 1.97)
 
 [node name="Network Manager" type="Node" parent="."]
 script = ExtResource("5_dc4xo")

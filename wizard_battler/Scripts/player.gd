@@ -47,10 +47,12 @@ func _doAction(action, mouse):
 		facing = calculateFacing(mouse)
 		$"../Projectile Manager".addFireball(xpos, ypos, facing)
 		idleAnimation.hide()
+		$Fire_Intention.hide()
 		castingAnimation.show()
 		castingAnimation.play()
 	position.x = (xpos * 128) + 64
 	position.y = (ypos * 128) + 64
+	$Fire_Intention.hide()
 	action = null
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -67,12 +69,24 @@ func _process(delta):
 		#set action
 		if Input.is_action_pressed("up"):
 			action = "up"
+			$Fire_Intention.position.x = 0
+			$Fire_Intention.position.y = -51
+			$Fire_Intention.show()
 		elif Input.is_action_pressed("down"):
 			action = "down"
+			$Fire_Intention.position.x = 0
+			$Fire_Intention.position.y = 51
+			$Fire_Intention.show()
 		elif Input.is_action_pressed("left"):
 			action = "left"
+			$Fire_Intention.position.x = -51
+			$Fire_Intention.position.y = 0
+			$Fire_Intention.show()
 		elif Input.is_action_pressed("right"):
 			action = "right"
+			$Fire_Intention.position.x = 51
+			$Fire_Intention.position.y = 0
+			$Fire_Intention.show()
 		elif Input.is_action_pressed("fireball"):
 			action = "fireball"
 		
