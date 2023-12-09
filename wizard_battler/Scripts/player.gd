@@ -129,6 +129,6 @@ func detectHit():
 	#check if a fireball has hit
 	for fireball in $"../Projectile Manager".fireballs:
 		if fireball != null:
-			if fireball.xpos == xpos and fireball.ypos == ypos:
+			if fireball.xpos == xpos and fireball.ypos == ypos and !multiplayer.is_server():
 				print("hit")
 				$"..".stopGame()
