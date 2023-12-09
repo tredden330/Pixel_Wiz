@@ -15,7 +15,6 @@ script = ExtResource("1_4c6x7")
 
 [node name="Clock" parent="." instance=ExtResource("4_uvoia")]
 position = Vector2(575, 64)
-scale = Vector2(1.97, 1.97)
 
 [node name="Network Manager" type="Node" parent="."]
 script = ExtResource("5_dc4xo")

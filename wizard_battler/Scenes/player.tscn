@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bb0wxkjct7qbb"]
+[gd_scene load_steps=12 format=3 uid="uid://bb0wxkjct7qbb"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_mn4sf"]
 [ext_resource type="Texture2D" uid="uid://bvbpeuxk1prnm" path="res://Graphics/Fire/Fire Wizard0.png" id="2_urjhg"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://t16duq6j5q4y" path="res://Graphics/Fire/Fire Wizard4.png" id="7_qkdkg"]
 [ext_resource type="Texture2D" uid="uid://re47lmlxxfap" path="res://Graphics/Fire/Fire Wizard5.png" id="8_4mml1"]
 [ext_resource type="Texture2D" uid="uid://cm1f0d2qhiphh" path="res://Graphics/Fire/Fire Wizard6.png" id="9_6vkuo"]
+[ext_resource type="Texture2D" uid="uid://kjyo2ws7muxm" path="res://Graphics/Fire/Fire_Intention.png" id="10_fyqfc"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ycsj2"]
 animations = [{
@@ -44,7 +45,6 @@ scale = Vector2(2.5, 2.5)
 script = ExtResource("1_mn4sf")
 
 [node name="Fire_Idle" type="Sprite2D" parent="."]
-position = Vector2(6, 0)
 texture = ExtResource("2_urjhg")
 
 [node name="Arrow_parent" type="Node2D" parent="."]
@@ -54,9 +54,10 @@ position = Vector2(26, -1)
 texture = ExtResource("3_341hn")
 
 [node name="Casting_Animation" type="AnimatedSprite2D" parent="."]
-position = Vector2(6, 0)
 sprite_frames = SubResource("SpriteFrames_ycsj2")
 frame = 6
 frame_progress = 1.0
 
 [node name="Fire_Intention" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("10_fyqfc")
