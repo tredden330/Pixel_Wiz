@@ -1,6 +1,6 @@
 extends Node2D
 
-var fireball = load("res://fireball.tscn")
+var fireball = load("res://Scenes/fireball.tscn")
 var fireballs = []
 
 # Called when the node enters the scene tree for the first time.
