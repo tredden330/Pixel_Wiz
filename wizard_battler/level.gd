@@ -21,11 +21,10 @@ func _process(delta):
 		$Clock.get_child(1).rotation = time
 
 		if ($Clock.get_child(1).rotation >= 6.283185):
-			print("tick")
+			
 			$Clock.get_child(1).rotation = 0
 			$"Projectile Manager".resolveProjectileMoves()
-			for player in $"Network Manager".player_models:
-				print(player.xpos)
 
 func stopGame():
 	gameStarted = false
+	$"Network Manager".player_models = []

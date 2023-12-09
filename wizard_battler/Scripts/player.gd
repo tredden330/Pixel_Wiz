@@ -55,8 +55,12 @@ func _doAction(action, mouse):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	
 	position.x = (xpos * 128) + 64
 	position.y = (ypos * 128) + 64
+	
+	detectHit()
+	
 	#if this player is the one that controls this unit
 	if name == str(multiplayer.get_unique_id()):
 		
@@ -127,3 +131,4 @@ func detectHit():
 		if fireball != null:
 			if fireball.xpos == xpos and fireball.ypos == ypos:
 				print("hit")
+				$"..".stopGame()

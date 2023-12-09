@@ -13,6 +13,7 @@ func _ready():
 	pass # Replace with function body.
 
 func _moveProjectile():
+
 	if (direction == null):
 		pass
 	elif (direction == Vector2(0,-1)):
