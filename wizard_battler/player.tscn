@@ -58,3 +58,5 @@ position = Vector2(6, 0)
 sprite_frames = SubResource("SpriteFrames_ycsj2")
 frame = 6
 frame_progress = 1.0
+
+[node name="Fire_Intention" type="Sprite2D" parent="."]

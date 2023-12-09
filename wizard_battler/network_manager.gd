@@ -6,7 +6,7 @@ var port = 2049
 var peer = ENetMultiplayerPeer.new()
 
 var time = 0.0
-var up = 8
+var up = 5
 
 #grab player scene
 @export var player_char: PackedScene
