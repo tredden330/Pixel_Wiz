@@ -23,7 +23,7 @@ func _ready():
 
 #executes actions and movements
 func _doAction(action, mouse):
-	print(action, mouse)
+	#print(action, mouse)
 	if (action == null):
 		idleAnimation.show()
 		castingAnimation.hide()
@@ -52,9 +52,6 @@ func _doAction(action, mouse):
 	position.x = (xpos * 128) + 64
 	position.y = (ypos * 128) + 64
 	action = null
-	
-		
-		
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -66,13 +63,13 @@ func _process(delta):
 		#set action
 		if Input.is_action_pressed("up"):
 			action = "up"
-		if Input.is_action_pressed("down"):
+		elif Input.is_action_pressed("down"):
 			action = "down"
-		if Input.is_action_pressed("left"):
+		elif Input.is_action_pressed("left"):
 			action = "left"
-		if Input.is_action_pressed("right"):
+		elif Input.is_action_pressed("right"):
 			action = "right"
-		if Input.is_action_pressed("fireball"):
+		elif Input.is_action_pressed("fireball"):
 			action = "fireball"
 		
 		#if the server requested an action, give it
@@ -124,3 +121,9 @@ func calculateFacing(mouse):
 			face = Vector2(0, -1)
 	return face
 	
+func detectHit():
+	#check if a fireball has hit
+	for fireball in $"../Projectile Manager".fireballs:
+		if fireball != null:
+			if fireball.xpos == xpos and fireball.ypos == ypos:
+				print("hit")

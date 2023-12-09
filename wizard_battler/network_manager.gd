@@ -61,13 +61,21 @@ func _process(delta):
 func peer_connected(id):
 	print("Player Connected: ", id)
 	players.append(id)
-	
+	_register_player.rpc()
+
+@rpc("any_peer", "reliable")
+func _register_player():
+	var new_player_id = multiplayer.get_remote_sender_id()
+	print("Player remote sender id: ", new_player_id)
+	#players[new_player_id] = new_player_info
+	#player_connected.emit(new_player_id, new_player_info)
+
 func peer_disconnected(id):
 	print("Player Disconnected: ", id)
 	players.erase(id)
 	print(players)
 	if len(players) == 0:
-		$"..".quitGame()
+		$"..".stopGame()
 		time = 0.0
 	
 
@@ -94,19 +102,19 @@ func startGame():
 		print("sending player messages: ", players)
 		var randoms = []
 		for player in players:
-			randoms.append(rng.randi_range(0,9))
+			randoms.append([rng.randi_range(0,8), rng.randi_range(0,4)])
 		setupPlayers.rpc(players, randoms)
 		
 @rpc("any_peer", "call_local", "reliable", 0)
 func setupPlayers(players, locations):
-	print(players)
+	print("setting up: ", players)
 	for index in len(players):
 		print(index)
 		var instance = player_char.instantiate()
 		$"..".add_child(instance)
 		instance.name = str(players[index])
-		instance.xpos = locations[index]
-		instance.ypos = locations[index]
+		instance.xpos = locations[index][0]
+		instance.ypos = locations[index][1]
 		player_models.append(instance)
 		
 
