@@ -3,10 +3,10 @@
 [ext_resource type="Texture2D" uid="uid://bqt58rrql2lj7" path="res://Graphics/Tiles/WoodTile.png" id="1_fn5pt"]
 
 [node name="Floor" type="Node2D"]
+show_behind_parent = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_repeat = 2
-scale = Vector2(2, 2)
 texture = ExtResource("1_fn5pt")
 centered = false
 region_rect = Rect2(0, 0, 64, 64)

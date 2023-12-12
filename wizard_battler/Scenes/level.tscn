@@ -1,7 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://c0568nyr02eu0"]
+[gd_scene load_steps=7 format=3 uid="uid://c0568nyr02eu0"]
 
 [ext_resource type="Script" path="res://level.gd" id="1_4c6x7"]
-[ext_resource type="PackedScene" uid="uid://ccos6b67hpvga" path="res://Scenes/floor.tscn" id="1_chu3p"]
 [ext_resource type="PackedScene" uid="uid://bb0wxkjct7qbb" path="res://Scenes/player.tscn" id="2_vg8ex"]
 [ext_resource type="PackedScene" uid="uid://borx6ycps6fvi" path="res://Scenes/clock.tscn" id="4_uvoia"]
 [ext_resource type="Script" path="res://network_manager.gd" id="5_dc4xo"]
@@ -10,8 +9,6 @@
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_4c6x7")
-
-[node name="Floor" parent="." instance=ExtResource("1_chu3p")]
 
 [node name="Clock" parent="." instance=ExtResource("4_uvoia")]
 position = Vector2(575, 64)

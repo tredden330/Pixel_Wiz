@@ -48,7 +48,7 @@ _data = {
 point_count = 2
 
 [node name="Player1" type="Node2D"]
-scale = Vector2(2, 2)
+scale = Vector2(2.5, 2.5)
 script = ExtResource("1_mn4sf")
 
 [node name="Fire_Idle" type="Sprite2D" parent="."]

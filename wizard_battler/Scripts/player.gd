@@ -24,6 +24,7 @@ func _ready():
 #executes actions and movements
 func _doAction(action, mouse):
 	#print(action, mouse)
+	$Path2D/PathFollow2D/Fire_Intention2.hide()
 	if (action == null):
 		idleAnimation.show()
 		castingAnimation.hide()
@@ -69,26 +70,44 @@ func _process(delta):
 		#set action
 		if Input.is_action_pressed("up"):
 			action = "up"
-			$Fire_Intention.position.x = 0
-			$Fire_Intention.position.y = -51
-			$Fire_Intention.show()
+			$Path2D/PathFollow2D/Fire_Intention2.show()
+			$Path2D/PathFollow2D.playing = true
+			$Path2D/PathFollow2D.ratio = 0.0
+			$Path2D.curve.clear_points()
+			$Path2D.curve.add_point(Vector2(0, 0))
+			$Path2D.curve.add_point(Vector2(0, -51))
+			$Path2D/PathFollow2D/Fire_Intention2.rotation_degrees = 90
+			
 		elif Input.is_action_pressed("down"):
 			action = "down"
-			$Fire_Intention.position.x = 0
-			$Fire_Intention.position.y = 51
-			$Fire_Intention.show()
+			$Path2D/PathFollow2D/Fire_Intention2.show()
+			$Path2D/PathFollow2D.playing = true
+			$Path2D/PathFollow2D.ratio = 0.0
+			$Path2D.curve.clear_points()
+			$Path2D.curve.add_point(Vector2(0, 0))
+			$Path2D.curve.add_point(Vector2(0, 51))
+			$Path2D/PathFollow2D/Fire_Intention2.rotation_degrees = 270
 		elif Input.is_action_pressed("left"):
 			action = "left"
-			$Fire_Intention.position.x = -51
-			$Fire_Intention.position.y = 0
-			$Fire_Intention.show()
+			$Path2D/PathFollow2D/Fire_Intention2.show()
+			$Path2D/PathFollow2D.playing = true
+			$Path2D/PathFollow2D.ratio = 0.0
+			$Path2D.curve.clear_points()
+			$Path2D.curve.add_point(Vector2(0, 0))
+			$Path2D.curve.add_point(Vector2(-51, 0))
+			$Path2D/PathFollow2D/Fire_Intention2.rotation_degrees = 180
 		elif Input.is_action_pressed("right"):
 			action = "right"
-			$Fire_Intention.position.x = 51
-			$Fire_Intention.position.y = 0
-			$Fire_Intention.show()
+			$Path2D/PathFollow2D/Fire_Intention2.show()
+			$Path2D/PathFollow2D.playing = true
+			$Path2D/PathFollow2D.ratio = 0.0
+			$Path2D.curve.clear_points()
+			$Path2D.curve.add_point(Vector2(0, 0))
+			$Path2D.curve.add_point(Vector2(51, 0))
+			$Path2D/PathFollow2D/Fire_Intention2.rotation_degrees = 0
 		elif Input.is_action_pressed("fireball"):
 			action = "fireball"
+			$Path2D/PathFollow2D/Fire_Intention2.hide()
 		
 		#if the server requested an action, give it
 		if actionRequested == true:
