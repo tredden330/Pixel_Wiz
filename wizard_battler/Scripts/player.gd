@@ -11,12 +11,14 @@ var facing = Vector2(1, 0)
 
 var idleAnimation
 var castingAnimation
+var shadowAnimation
 
 var actionRequested = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	idleAnimation = $Fire_Idle
+	idleAnimation = $Path2D2/PathFollow2D/Fire_Idle2
+	shadowAnimation = $Path2D/PathFollow2D/Fire_Intention2
 	castingAnimation = $Casting_Animation
 	idleAnimation.show()
 	castingAnimation.hide()
@@ -70,41 +72,20 @@ func _process(delta):
 		#set action
 		if Input.is_action_pressed("up"):
 			action = "up"
-			$Path2D/PathFollow2D/Fire_Intention2.show()
-			$Path2D/PathFollow2D.playing = true
-			$Path2D/PathFollow2D.ratio = 0.0
-			$Path2D.curve.clear_points()
-			$Path2D.curve.add_point(Vector2(0, 0))
-			$Path2D.curve.add_point(Vector2(0, -51))
-			$Path2D/PathFollow2D/Fire_Intention2.rotation_degrees = 90
+			lerpAnimate(shadowAnimation, Vector2(0, -51), 90, 5)
 			
 		elif Input.is_action_pressed("down"):
 			action = "down"
-			$Path2D/PathFollow2D/Fire_Intention2.show()
-			$Path2D/PathFollow2D.playing = true
-			$Path2D/PathFollow2D.ratio = 0.0
-			$Path2D.curve.clear_points()
-			$Path2D.curve.add_point(Vector2(0, 0))
-			$Path2D.curve.add_point(Vector2(0, 51))
-			$Path2D/PathFollow2D/Fire_Intention2.rotation_degrees = 270
+			lerpAnimate(shadowAnimation, Vector2(0, 51), 270, 5)
+			
 		elif Input.is_action_pressed("left"):
 			action = "left"
-			$Path2D/PathFollow2D/Fire_Intention2.show()
-			$Path2D/PathFollow2D.playing = true
-			$Path2D/PathFollow2D.ratio = 0.0
-			$Path2D.curve.clear_points()
-			$Path2D.curve.add_point(Vector2(0, 0))
-			$Path2D.curve.add_point(Vector2(-51, 0))
-			$Path2D/PathFollow2D/Fire_Intention2.rotation_degrees = 180
+			lerpAnimate(shadowAnimation, Vector2(-51, 0), 180, 5)
+			
 		elif Input.is_action_pressed("right"):
 			action = "right"
-			$Path2D/PathFollow2D/Fire_Intention2.show()
-			$Path2D/PathFollow2D.playing = true
-			$Path2D/PathFollow2D.ratio = 0.0
-			$Path2D.curve.clear_points()
-			$Path2D.curve.add_point(Vector2(0, 0))
-			$Path2D.curve.add_point(Vector2(51, 0))
-			$Path2D/PathFollow2D/Fire_Intention2.rotation_degrees = 0
+			lerpAnimate(shadowAnimation, Vector2(51, 0), 0, 5)
+			
 		elif Input.is_action_pressed("fireball"):
 			action = "fireball"
 			$Path2D/PathFollow2D/Fire_Intention2.hide()
@@ -121,9 +102,13 @@ func _process(delta):
 			if (player_location_minus_mouse.x > 0):
 				$Arrow_parent.rotation_degrees = 0
 				facing = Vector2(1, 0)
+				idleAnimation.flip_h = false
+				idleAnimation.flip_v = false
 			else:
 				$Arrow_parent.rotation_degrees = 180
 				facing = Vector2(-1, 0)
+				idleAnimation.flip_h = true
+				idleAnimation.flip_v = false
 		else:
 			if (player_location_minus_mouse.y > 0):
 				$Arrow_parent.rotation_degrees = 90
@@ -165,3 +150,15 @@ func detectHit():
 			if fireball.xpos == xpos and fireball.ypos == ypos and !multiplayer.is_server():
 				print("hit")
 				$"..".stopGame()
+				
+func lerpAnimate(animation, targetPos, rot, speed):
+	animation.show()
+	var pathFollow = animation.get_parent()
+	var path = pathFollow.get_parent()
+	pathFollow.playing = true
+	pathFollow.ratio = 0.0
+	pathFollow.speed = speed
+	path.curve.clear_points()
+	path.curve.add_point(Vector2(0, 0))
+	path.curve.add_point(targetPos)
+	animation.rotation_degrees = rot
