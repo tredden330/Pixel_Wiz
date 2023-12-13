@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=3 uid="uid://cqh3dikso4716"]
+
+[ext_resource type="Texture2D" uid="uid://bqt58rrql2lj7" path="res://Graphics/Tiles/WoodTile.png" id="1_614td"]
+[ext_resource type="PackedScene" uid="uid://bpsdnnfcu3hbx" path="res://Scenes/room.tscn" id="1_c8803"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qh3a5"]
+size = Vector2(60, 62)
+
+[node name="playground" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+visible = false
+gravity_scale = 0.0
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
+texture = ExtResource("1_614td")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(-1, 0)
+shape = SubResource("RectangleShape2D_qh3a5")
+
+[node name="RigidBody2D2" type="RigidBody2D" parent="."]
+visible = false
+position = Vector2(0, -32.89)
+gravity_scale = 0.0
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D2"]
+texture = ExtResource("1_614td")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D2"]
+position = Vector2(-1, 0)
+shape = SubResource("RectangleShape2D_qh3a5")
+
+[node name="room" parent="." instance=ExtResource("1_c8803")]
+lock_rotation = true

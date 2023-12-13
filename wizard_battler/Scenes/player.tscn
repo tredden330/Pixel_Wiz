@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bb0wxkjct7qbb"]
+[gd_scene load_steps=15 format=3 uid="uid://bb0wxkjct7qbb"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_mn4sf"]
 [ext_resource type="Texture2D" uid="uid://bvbpeuxk1prnm" path="res://Graphics/Fire/Fire Wizard0.png" id="2_urjhg"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://cm1f0d2qhiphh" path="res://Graphics/Fire/Fire Wizard6.png" id="9_6vkuo"]
 [ext_resource type="Texture2D" uid="uid://kjyo2ws7muxm" path="res://Graphics/Fire/Fire_Intention.png" id="10_fyqfc"]
 [ext_resource type="Script" path="res://Scenes/PathFollow2D.gd" id="11_8ajuq"]
+[ext_resource type="Texture2D" uid="uid://c8jbhw4vaqlve" path="res://Graphics/Fire/FireAttackBasic4.png" id="12_uml4a"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ycsj2"]
 animations = [{
@@ -51,9 +52,6 @@ point_count = 2
 scale = Vector2(2, 2)
 script = ExtResource("1_mn4sf")
 
-[node name="Fire_Idle" type="Sprite2D" parent="."]
-texture = ExtResource("2_urjhg")
-
 [node name="Arrow_parent" type="Node2D" parent="."]
 
 [node name="Arrow" type="Sprite2D" parent="Arrow_parent"]
@@ -76,5 +74,25 @@ curve = SubResource("Curve2D_xj4fy")
 script = ExtResource("11_8ajuq")
 
 [node name="Fire_Intention2" type="Sprite2D" parent="Path2D/PathFollow2D"]
-scale = Vector2(1, 1)
 texture = ExtResource("10_fyqfc")
+
+[node name="Path2D2" type="Path2D" parent="."]
+curve = SubResource("Curve2D_xj4fy")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D2"]
+script = ExtResource("11_8ajuq")
+
+[node name="Fire_Idle" type="Sprite2D" parent="Path2D2/PathFollow2D"]
+texture = ExtResource("2_urjhg")
+
+[node name="Path2D3" type="Path2D" parent="."]
+curve = SubResource("Curve2D_xj4fy")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D3"]
+script = ExtResource("11_8ajuq")
+
+[node name="Fire_Idle" type="Sprite2D" parent="Path2D3/PathFollow2D"]
+texture = ExtResource("2_urjhg")
+
+[node name="fireballVisual" type="Sprite2D" parent="Path2D3/PathFollow2D"]
+texture = ExtResource("12_uml4a")
